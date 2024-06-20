@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор і додавання елементів до списку</title>
+</head>
+<body>
+    <h1>Додавання елементів до списку</h1>
+    <ul id="test"></ul>
+    <button onclick="addItem()">Додати елементи</button>
+
+    <h1>Калькулятор</h1>
+    <input type="number" id="num1" placeholder="Перше число">
+    <input type="number" id="num2" placeholder="Друге число">
+    <select id="mark">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <button onclick="calculate()">Обчислити</button>
+    <p>Результат: <span id="result"></span></p>
+    <script>
+        function count(num1, num2, mark) {
+            switch (mark) {
+                case "+":
+                    return num1 + num2;
+                case "-":
+                    return num1 - num2;
+                case "*":
+                    return num1 * num2;
+                case "/":
+                    return num1 / num2;
+            }
+            return mark;
+        }
+
+        function calculate() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var mark = document.getElementById("mark").value;
+            var result = count(num1, num2, mark);
+            document.getElementById("result").innerText = result;
+        }
+
+        function addItem() {
+            for (let i = 0; i < 3; i++) {
+                var child = document.createElement("li");
+                var text = document.createTextNode("Item");
+                child.appendChild(text);
+
+                var parent = document.getElementById("test");
+                parent.appendChild(child);
+            }
+        }
+    </script>
+</body>
+</html>
